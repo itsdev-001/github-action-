@@ -5,10 +5,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>Dev Singh | DevOps Portfolio</title>
+  <title>Dev Singh | DevOps Engineer</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;700&display=swap"
     rel="stylesheet">
 
   <style>
@@ -20,37 +20,93 @@
     }
 
     body {
-      font-family: 'Inter', sans-serif;
+      font-family: 'Space Grotesk', sans-serif;
       background: #050816;
       color: white;
       overflow-x: hidden;
     }
 
-    body::before {
-      content: '';
+    ::selection {
+      background: #00f0ff;
+      color: black;
+    }
+
+    /* BACKGROUND */
+
+    .bg {
       position: fixed;
+      inset: 0;
+      z-index: -10;
+      overflow: hidden;
+    }
+
+    .blob1,
+    .blob2,
+    .blob3 {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(140px);
+      opacity: .18;
+    }
+
+    .blob1 {
       width: 500px;
       height: 500px;
       background: #00f0ff;
-      filter: blur(180px);
-      opacity: 0.15;
-      top: -200px;
-      left: -150px;
-      z-index: -1;
+      top: -120px;
+      left: -120px;
+      animation: float1 10s infinite alternate;
     }
 
-    body::after {
-      content: '';
-      position: fixed;
-      width: 500px;
-      height: 500px;
+    .blob2 {
+      width: 450px;
+      height: 450px;
       background: #8a2be2;
-      filter: blur(180px);
-      opacity: 0.15;
-      bottom: -200px;
-      right: -150px;
-      z-index: -1;
+      bottom: -120px;
+      right: -120px;
+      animation: float2 12s infinite alternate;
     }
+
+    .blob3 {
+      width: 300px;
+      height: 300px;
+      background: #ff00cc;
+      top: 40%;
+      left: 45%;
+      animation: float3 8s infinite alternate;
+    }
+
+    @keyframes float1 {
+      from {
+        transform: translateY(0px);
+      }
+
+      to {
+        transform: translateY(80px);
+      }
+    }
+
+    @keyframes float2 {
+      from {
+        transform: translateX(0px);
+      }
+
+      to {
+        transform: translateX(-70px);
+      }
+    }
+
+    @keyframes float3 {
+      from {
+        transform: translateY(0px);
+      }
+
+      to {
+        transform: translateY(-60px);
+      }
+    }
+
+    /* NAVBAR */
 
     nav {
       width: 100%;
@@ -58,20 +114,21 @@
       top: 0;
       z-index: 1000;
 
-      backdrop-filter: blur(20px);
-      background: rgba(255, 255, 255, 0.04);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-
-      padding: 20px 8%;
+      padding: 22px 8%;
 
       display: flex;
       justify-content: space-between;
       align-items: center;
+
+      backdrop-filter: blur(20px);
+      background: rgba(255, 255, 255, 0.04);
+
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
     }
 
     .logo {
-      font-size: 28px;
-      font-weight: 800;
+      font-size: 30px;
+      font-weight: 700;
       background: linear-gradient(to right, #00f0ff, #8a2be2);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
@@ -80,15 +137,14 @@
     nav ul {
       display: flex;
       list-style: none;
-      gap: 35px;
+      gap: 40px;
     }
 
     nav ul li a {
-      color: #d5d5d5;
       text-decoration: none;
+      color: #d0d0d0;
       transition: .3s;
       font-size: 15px;
-      font-weight: 500;
     }
 
     nav ul li a:hover {
@@ -99,13 +155,16 @@
       padding: 120px 8%;
     }
 
+    /* HERO */
+
     .hero {
       min-height: 100vh;
 
       display: flex;
-      align-items: center;
       justify-content: space-between;
-      gap: 80px;
+      align-items: center;
+
+      gap: 70px;
       flex-wrap: wrap;
     }
 
@@ -114,33 +173,43 @@
       min-width: 320px;
     }
 
-    .hero-text span {
+    .tag {
+      display: inline-block;
+
+      padding: 10px 18px;
+
+      background: rgba(255, 255, 255, 0.06);
+
+      border: 1px solid rgba(255, 255, 255, 0.08);
+
+      border-radius: 999px;
+
+      margin-bottom: 25px;
+
       color: #00f0ff;
-      letter-spacing: 2px;
-      text-transform: uppercase;
+
       font-size: 14px;
-      font-weight: 600;
     }
 
-    .hero-text h1 {
-      font-size: 78px;
+    .hero h1 {
+      font-size: 86px;
       line-height: 1.05;
-      margin: 20px 0;
-      font-weight: 800;
+      margin-bottom: 30px;
+      font-weight: 700;
     }
 
-    .hero-text h1 strong {
+    .hero h1 span {
       background: linear-gradient(to right, #00f0ff, #8a2be2);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
 
-    .hero-text p {
-      color: #b9b9b9;
-      line-height: 1.9;
-      max-width: 650px;
+    .hero p {
+      color: #bdbdbd;
+      line-height: 2;
+      font-size: 18px;
+      max-width: 700px;
       margin-bottom: 40px;
-      font-size: 17px;
     }
 
     .hero-buttons {
@@ -150,134 +219,185 @@
     }
 
     .btn {
-      padding: 15px 34px;
-      border-radius: 14px;
+      padding: 16px 34px;
+
+      border-radius: 16px;
+
       text-decoration: none;
+
       font-weight: 600;
+
       transition: .4s;
+
       display: inline-block;
     }
 
     .primary-btn {
       background: linear-gradient(to right, #00f0ff, #8a2be2);
       color: white;
-      box-shadow: 0 10px 35px rgba(0, 240, 255, 0.25);
+
+      box-shadow: 0 15px 40px rgba(0, 240, 255, 0.25);
     }
 
     .secondary-btn {
-      border: 1px solid rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+
       background: rgba(255, 255, 255, 0.04);
+
       color: white;
+
       backdrop-filter: blur(10px);
     }
 
     .btn:hover {
-      transform: translateY(-5px);
+      transform: translateY(-6px);
     }
 
+    /* HERO CARD */
+
     .hero-card {
-      width: 370px;
-      height: 420px;
+      width: 390px;
+      height: 450px;
+
+      position: relative;
+
+      border-radius: 34px;
+
+      overflow: hidden;
 
       background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(255, 255, 255, 0.08);
 
-      border-radius: 30px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
 
       backdrop-filter: blur(20px);
 
       display: flex;
-      flex-direction: column;
       justify-content: center;
       align-items: center;
 
-      position: relative;
-
-      overflow: hidden;
+      flex-direction: column;
     }
 
     .hero-card::before {
       content: '';
+
       position: absolute;
-      width: 180px;
-      height: 180px;
+
+      width: 200px;
+      height: 200px;
+
       background: #00f0ff;
-      filter: blur(100px);
+
+      border-radius: 50%;
+
+      filter: blur(120px);
+
+      top: -50px;
+      right: -50px;
+
       opacity: .25;
-      top: -40px;
-      right: -40px;
     }
 
     .hero-card::after {
       content: '';
+
       position: absolute;
-      width: 180px;
-      height: 180px;
+
+      width: 200px;
+      height: 200px;
+
       background: #8a2be2;
-      filter: blur(100px);
+
+      border-radius: 50%;
+
+      filter: blur(120px);
+
+      bottom: -50px;
+      left: -50px;
+
       opacity: .25;
-      bottom: -40px;
-      left: -40px;
     }
 
-    .hero-card h2 {
-      font-size: 34px;
-      margin-top: 20px;
-    }
+    .hero-card img {
+      width: 170px;
+      height: 170px;
+      border-radius: 50%;
+      object-fit: cover;
 
-    .hero-card p {
-      color: #b8b8b8;
-      margin-top: 10px;
-    }
+      border: 4px solid rgba(255, 255, 255, 0.1);
 
-    .emoji {
-      font-size: 110px;
       z-index: 2;
     }
 
+    .hero-card h2 {
+      margin-top: 25px;
+      font-size: 36px;
+      z-index: 2;
+    }
+
+    .hero-card p {
+      margin-top: 10px;
+      color: #b9b9b9;
+      z-index: 2;
+    }
+
+    /* TITLES */
+
     .section-title {
       text-align: center;
-      font-size: 52px;
-      margin-bottom: 70px;
-      font-weight: 800;
+      font-size: 56px;
+      margin-bottom: 80px;
 
       background: linear-gradient(to right, #00f0ff, white);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
 
-    .glass-box {
+    /* GLASS */
+
+    .glass {
       background: rgba(255, 255, 255, 0.04);
+
       border: 1px solid rgba(255, 255, 255, 0.08);
+
       backdrop-filter: blur(18px);
 
       border-radius: 28px;
 
-      padding: 40px;
-
       transition: .4s;
     }
 
-    .glass-box:hover {
-      transform: translateY(-8px);
-      border-color: rgba(0, 240, 255, 0.4);
+    .glass:hover {
+      transform: translateY(-10px);
+      border-color: rgba(0, 240, 255, 0.35);
     }
 
-    .about p {
-      line-height: 2;
-      color: #c5c5c5;
+    /* ABOUT */
+
+    .about-box {
+      padding: 50px;
+    }
+
+    .about-box p {
+      line-height: 2.1;
+      color: #c4c4c4;
       font-size: 17px;
     }
 
+    /* SKILLS */
+
     .skills-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+
       gap: 30px;
     }
 
     .skill-card {
-      text-align: center;
       padding: 45px 30px;
+
+      text-align: center;
     }
 
     .skill-card h3 {
@@ -286,48 +406,67 @@
     }
 
     .skill-icon {
-      font-size: 50px;
+      font-size: 52px;
     }
+
+    /* PROJECTS */
 
     .projects-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+
+      grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
+
       gap: 35px;
+    }
+
+    .project-card {
+      overflow: hidden;
     }
 
     .project-card img {
       width: 100%;
-      height: 220px;
+      height: 240px;
+
       object-fit: cover;
-      border-radius: 18px;
-      margin-bottom: 22px;
     }
 
-    .project-card h3 {
+    .project-content {
+      padding: 30px;
+    }
+
+    .project-content h3 {
+      font-size: 30px;
       margin-bottom: 15px;
-      font-size: 28px;
     }
 
-    .project-card p {
-      color: #bcbcbc;
-      line-height: 1.8;
+    .project-content p {
+      color: #bfbfbf;
+      line-height: 1.9;
     }
+
+    /* CONTACT */
 
     .contact-box {
-      max-width: 800px;
+      max-width: 850px;
       margin: auto;
+
+      padding: 50px;
     }
 
     .contact-box input,
     .contact-box textarea {
       width: 100%;
+
       padding: 18px;
+
       margin: 15px 0;
 
       border-radius: 14px;
+
       border: 1px solid rgba(255, 255, 255, 0.08);
 
       background: rgba(255, 255, 255, 0.04);
+
       color: white;
 
       outline: none;
@@ -336,9 +475,13 @@
     footer {
       padding: 35px;
       text-align: center;
+
       border-top: 1px solid rgba(255, 255, 255, 0.08);
-      color: #9e9e9e;
+
+      color: #9f9f9f;
     }
+
+    /* MOBILE */
 
     @media(max-width:950px) {
 
@@ -351,8 +494,8 @@
         text-align: center;
       }
 
-      .hero-text h1 {
-        font-size: 54px;
+      .hero h1 {
+        font-size: 56px;
       }
 
       .hero-buttons {
@@ -361,13 +504,21 @@
 
       .hero-card {
         width: 100%;
-        max-width: 360px;
+        max-width: 390px;
       }
     }
   </style>
 </head>
 
 <body>
+
+  <!-- BACKGROUND -->
+
+  <div class="bg">
+    <div class="blob1"></div>
+    <div class="blob2"></div>
+    <div class="blob3"></div>
+  </div>
 
   <!-- NAVBAR -->
 
@@ -390,18 +541,21 @@
 
     <div class="hero-text">
 
-      <span>Aspiring DevOps Engineer</span>
+      <div class="tag">
+        Aspiring DevOps Engineer
+      </div>
 
       <h1>
-        Building Modern
-        <strong>CI/CD & Cloud</strong>
-        Workflows
+        Building
+        <span>Modern Cloud</span>
+        & CI/CD Workflows
       </h1>
 
       <p>
-        Passionate about Linux, Docker, GitHub Actions, Networking,
-        Shell Scripting and AWS. Focused on building scalable,
-        secure and automated systems using modern DevOps practices.
+        Passionate about Linux, Docker, GitHub Actions,
+        Networking, Shell Scripting and AWS.
+        Focused on building scalable, secure and automated
+        systems using modern DevOps practices.
       </p>
 
       <div class="hero-buttons">
@@ -420,7 +574,7 @@
 
     <div class="hero-card">
 
-      <div class="emoji">👨‍💻</div>
+      <img src="https://i.imgur.com/6VBx3io.png">
 
       <h2>Dev Singh</h2>
 
@@ -432,18 +586,18 @@
 
   <!-- ABOUT -->
 
-  <section id="about" class="about">
+  <section id="about">
 
     <h2 class="section-title">About Me</h2>
 
-    <div class="glass-box">
+    <div class="glass about-box">
 
       <p>
         I am currently learning DevOps and cloud technologies with
         a strong focus on Linux administration, Docker containers,
-        CI/CD automation, GitHub Actions, networking and AWS.
-        I enjoy building practical projects and continuously improving
-        my deployment and infrastructure skills.
+        CI/CD pipelines, GitHub Actions, networking and AWS cloud
+        services. I enjoy building practical projects and improving
+        my deployment, automation and infrastructure skills every day.
       </p>
 
     </div>
@@ -458,44 +612,44 @@
 
     <div class="skills-grid">
 
-      <div class="glass-box skill-card">
+      <div class="glass skill-card">
         <div class="skill-icon">🐧</div>
         <h3>Linux</h3>
       </div>
 
-      <div class="glass-box skill-card">
+      <div class="glass skill-card">
         <div class="skill-icon">🐳</div>
         <h3>Docker</h3>
       </div>
 
-      <div class="glass-box skill-card">
+      <div class="glass skill-card">
         <div class="skill-icon">⚡</div>
         <h3>CI/CD</h3>
       </div>
 
-      <div class="glass-box skill-card">
-        <div class="skill-icon">🌐</div>
-        <h3>Networking</h3>
-      </div>
-
-      <div class="glass-box skill-card">
+      <div class="glass skill-card">
         <div class="skill-icon">☁</div>
         <h3>AWS</h3>
       </div>
 
-      <div class="glass-box skill-card">
+      <div class="glass skill-card">
+        <div class="skill-icon">🌐</div>
+        <h3>Networking</h3>
+      </div>
+
+      <div class="glass skill-card">
         <div class="skill-icon">📜</div>
         <h3>Shell Scripting</h3>
       </div>
 
-      <div class="glass-box skill-card">
-        <div class="skill-icon">🔧</div>
-        <h3>GitHub Actions</h3>
-      </div>
-
-      <div class="glass-box skill-card">
+      <div class="glass skill-card">
         <div class="skill-icon">🚀</div>
         <h3>Git & GitHub</h3>
+      </div>
+
+      <div class="glass skill-card">
+        <div class="skill-icon">🔧</div>
+        <h3>GitHub Actions</h3>
       </div>
 
     </div>
@@ -510,42 +664,57 @@
 
     <div class="projects-grid">
 
-      <div class="glass-box project-card">
+      <div class="glass project-card">
 
-        <img src="https://images.unsplash.com/photo-1515879218367-8466d910aaa4?q=80&w=1200&auto=format&fit=crop">
+        <img
+          src="https://images.unsplash.com/photo-1515879218367-8466d910aaa4?q=80&w=1200&auto=format&fit=crop">
 
-        <h3>CI/CD Pipeline</h3>
+        <div class="project-content">
 
-        <p>
-          Automated deployment workflow using GitHub Actions,
-          GitHub Pages and DevOps practices.
-        </p>
+          <h3>CI/CD Pipeline</h3>
 
-      </div>
+          <p>
+            Automated deployment pipeline using GitHub Actions,
+            GitHub Pages and modern DevOps workflows.
+          </p>
 
-      <div class="glass-box project-card">
-
-        <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=80&w=1200&auto=format&fit=crop">
-
-        <h3>Dockerized App</h3>
-
-        <p>
-          Built containerized applications using Docker
-          with scalable deployment workflows.
-        </p>
+        </div>
 
       </div>
 
-      <div class="glass-box project-card">
+      <div class="glass project-card">
 
-        <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=1200&auto=format&fit=crop">
+        <img
+          src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=80&w=1200&auto=format&fit=crop">
 
-        <h3>AWS Cloud Learning</h3>
+        <div class="project-content">
 
-        <p>
-          Exploring cloud deployment, networking and
-          infrastructure concepts using AWS services.
-        </p>
+          <h3>Dockerized Application</h3>
+
+          <p>
+            Built containerized applications using Docker
+            with scalable deployment architecture.
+          </p>
+
+        </div>
+
+      </div>
+
+      <div class="glass project-card">
+
+        <img
+          src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=1200&auto=format&fit=crop">
+
+        <div class="project-content">
+
+          <h3>AWS Cloud Learning</h3>
+
+          <p>
+            Exploring cloud deployment, networking
+            and infrastructure concepts using AWS.
+          </p>
+
+        </div>
 
       </div>
 
@@ -559,7 +728,7 @@
 
     <h2 class="section-title">Contact Me</h2>
 
-    <div class="glass-box contact-box">
+    <div class="glass contact-box">
 
       <input type="text" placeholder="Your Name">
 
@@ -578,7 +747,7 @@
   <!-- FOOTER -->
 
   <footer>
-    © 2026 Dev Singh • Aspiring DevOps Engineer
+    © 2026 Dev Singh • DevOps Engineer Portfolio
   </footer>
 
 </body>
