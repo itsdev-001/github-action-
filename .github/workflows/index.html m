@@ -1,1 +1,605 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>DevOps Portfolio</title>
 
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      scroll-behavior:smooth;
+    }
+
+    body{
+      font-family:'Poppins',sans-serif;
+      background:#070b14;
+      color:white;
+      overflow-x:hidden;
+    }
+
+    body::before{
+      content:'';
+      position:fixed;
+      width:500px;
+      height:500px;
+      background:linear-gradient(#00f0ff,#8a2be2);
+      border-radius:50%;
+      filter:blur(150px);
+      top:-150px;
+      left:-150px;
+      opacity:.4;
+      z-index:-1;
+      animation:float1 10s infinite alternate;
+    }
+
+    body::after{
+      content:'';
+      position:fixed;
+      width:400px;
+      height:400px;
+      background:linear-gradient(#ff00cc,#3333ff);
+      border-radius:50%;
+      filter:blur(140px);
+      bottom:-150px;
+      right:-100px;
+      opacity:.4;
+      z-index:-1;
+      animation:float2 12s infinite alternate;
+    }
+
+    @keyframes float1{
+      from{
+        transform:translateY(0px);
+      }
+      to{
+        transform:translateY(80px);
+      }
+    }
+
+    @keyframes float2{
+      from{
+        transform:translateX(0px);
+      }
+      to{
+        transform:translateX(-70px);
+      }
+    }
+
+    nav{
+      width:100%;
+      padding:22px 8%;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      position:fixed;
+      top:0;
+      z-index:1000;
+
+      backdrop-filter:blur(20px);
+      background:rgba(255,255,255,0.05);
+      border-bottom:1px solid rgba(255,255,255,0.1);
+    }
+
+    nav h1{
+      font-size:28px;
+      font-weight:700;
+      background:linear-gradient(to right,#00f0ff,#8a2be2);
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+    }
+
+    nav ul{
+      display:flex;
+      gap:35px;
+      list-style:none;
+    }
+
+    nav ul li a{
+      text-decoration:none;
+      color:white;
+      transition:.3s;
+      font-weight:500;
+    }
+
+    nav ul li a:hover{
+      color:#00f0ff;
+    }
+
+    section{
+      min-height:100vh;
+      padding:120px 8%;
+    }
+
+    .hero{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      flex-wrap:wrap;
+      gap:40px;
+    }
+
+    .hero-text{
+      flex:1;
+      min-width:300px;
+    }
+
+    .hero-text h3{
+      color:#00f0ff;
+      margin-bottom:15px;
+      font-size:20px;
+    }
+
+    .hero-text h1{
+      font-size:70px;
+      line-height:1.1;
+      margin-bottom:20px;
+    }
+
+    .hero-text p{
+      color:#cfcfcf;
+      line-height:1.8;
+      margin-bottom:35px;
+      max-width:600px;
+    }
+
+    .btns{
+      display:flex;
+      gap:20px;
+      flex-wrap:wrap;
+    }
+
+    .btn{
+      padding:14px 32px;
+      border-radius:40px;
+      text-decoration:none;
+      font-weight:600;
+      transition:.4s;
+      position:relative;
+      overflow:hidden;
+    }
+
+    .primary{
+      background:linear-gradient(135deg,#00f0ff,#8a2be2);
+      color:white;
+    }
+
+    .secondary{
+      border:1px solid rgba(255,255,255,0.2);
+      color:white;
+      backdrop-filter:blur(20px);
+      background:rgba(255,255,255,0.05);
+    }
+
+    .btn:hover{
+      transform:translateY(-5px);
+      box-shadow:0 10px 30px rgba(0,240,255,0.3);
+    }
+
+    .glass-card{
+      background:rgba(255,255,255,0.06);
+      border:1px solid rgba(255,255,255,0.1);
+      backdrop-filter:blur(20px);
+      border-radius:25px;
+      padding:30px;
+      transition:.4s;
+    }
+
+    .glass-card:hover{
+      transform:translateY(-10px);
+      border-color:#00f0ff;
+      box-shadow:0 10px 40px rgba(0,240,255,0.15);
+    }
+
+    .hero-image{
+      flex:1;
+      display:flex;
+      justify-content:center;
+      min-width:300px;
+    }
+
+    .circle{
+      width:350px;
+      height:350px;
+      border-radius:50%;
+      background:linear-gradient(135deg,#00f0ff,#8a2be2);
+      padding:6px;
+      animation:rotate 10s linear infinite;
+    }
+
+    .circle-inner{
+      width:100%;
+      height:100%;
+      border-radius:50%;
+      background:#0b1220;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      font-size:120px;
+    }
+
+    @keyframes rotate{
+      from{
+        transform:rotate(0deg);
+      }
+      to{
+        transform:rotate(360deg);
+      }
+    }
+
+    .section-title{
+      font-size:45px;
+      margin-bottom:60px;
+      text-align:center;
+      background:linear-gradient(to right,#00f0ff,#ffffff);
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+    }
+
+    .skills-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+      gap:30px;
+    }
+
+    .skill-card{
+      text-align:center;
+    }
+
+    .skill-card h3{
+      margin-top:20px;
+      font-size:22px;
+    }
+
+    .projects{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+      gap:30px;
+    }
+
+    .project-card img{
+      width:100%;
+      border-radius:20px;
+      margin-bottom:20px;
+    }
+
+    .project-card h3{
+      margin-bottom:15px;
+    }
+
+    .timeline{
+      position:relative;
+      margin-top:50px;
+    }
+
+    .timeline::before{
+      content:'';
+      position:absolute;
+      left:50%;
+      width:3px;
+      height:100%;
+      background:#00f0ff;
+      transform:translateX(-50%);
+    }
+
+    .timeline-item{
+      width:50%;
+      padding:20px 40px;
+      position:relative;
+    }
+
+    .timeline-item:nth-child(odd){
+      left:0;
+      text-align:right;
+    }
+
+    .timeline-item:nth-child(even){
+      left:50%;
+    }
+
+    .timeline-item::before{
+      content:'';
+      position:absolute;
+      width:18px;
+      height:18px;
+      background:#00f0ff;
+      border-radius:50%;
+      top:30px;
+    }
+
+    .timeline-item:nth-child(odd)::before{
+      right:-9px;
+    }
+
+    .timeline-item:nth-child(even)::before{
+      left:-9px;
+    }
+
+    .contact-box{
+      max-width:700px;
+      margin:auto;
+      text-align:center;
+    }
+
+    .contact-box input,
+    .contact-box textarea{
+      width:100%;
+      margin:15px 0;
+      padding:16px;
+      border:none;
+      outline:none;
+      border-radius:15px;
+      background:rgba(255,255,255,0.06);
+      color:white;
+      border:1px solid rgba(255,255,255,0.1);
+    }
+
+    footer{
+      text-align:center;
+      padding:30px;
+      border-top:1px solid rgba(255,255,255,0.1);
+      color:#bdbdbd;
+    }
+
+    .floating{
+      animation:floating 4s ease-in-out infinite;
+    }
+
+    @keyframes floating{
+      0%{
+        transform:translateY(0px);
+      }
+      50%{
+        transform:translateY(-15px);
+      }
+      100%{
+        transform:translateY(0px);
+      }
+    }
+
+    @media(max-width:900px){
+
+      nav ul{
+        display:none;
+      }
+
+      .hero-text h1{
+        font-size:50px;
+      }
+
+      .timeline::before{
+        left:10px;
+      }
+
+      .timeline-item{
+        width:100%;
+        padding-left:40px;
+        padding-right:10px;
+        text-align:left !important;
+        left:0 !important;
+      }
+
+      .timeline-item::before{
+        left:1px !important;
+      }
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <nav>
+    <h1>DEV.</h1>
+
+    <ul>
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+
+  <section class="hero">
+
+    <div class="hero-text">
+      <h3>Hello, I'm</h3>
+
+      <h1>Dev Singh</h1>
+
+      <p>
+        Aspiring DevOps Engineer passionate about Linux, Networking,
+        Docker, GitHub, CI/CD and Cloud Technologies.
+        I love building automated, scalable and secure systems.
+      </p>
+
+      <div class="btns">
+        <a href="#" class="btn primary">View Projects</a>
+        <a href="#" class="btn secondary">Download Resume</a>
+      </div>
+    </div>
+
+    <div class="hero-image floating">
+
+      <div class="circle">
+        <div class="circle-inner">
+          👨‍💻
+        </div>
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- ABOUT -->
+
+  <section id="about">
+
+    <h2 class="section-title">About Me</h2>
+
+    <div class="glass-card">
+      <p style="line-height:2;color:#d9d9d9;">
+        I am an aspiring DevOps Engineer focused on building modern cloud-native workflows.
+        My interests include Linux administration, Docker containers, GitHub Actions,
+        CI/CD automation, shell scripting, and AWS cloud technologies.
+      </p>
+    </div>
+
+  </section>
+
+  <!-- SKILLS -->
+
+  <section id="skills">
+
+    <h2 class="section-title">Skills</h2>
+
+    <div class="skills-grid">
+
+      <div class="glass-card skill-card">
+        <h3>Linux</h3>
+      </div>
+
+      <div class="glass-card skill-card">
+        <h3>Docker</h3>
+      </div>
+
+      <div class="glass-card skill-card">
+        <h3>Git & GitHub</h3>
+      </div>
+
+      <div class="glass-card skill-card">
+        <h3>CI/CD</h3>
+      </div>
+
+      <div class="glass-card skill-card">
+        <h3>Networking</h3>
+      </div>
+
+      <div class="glass-card skill-card">
+        <h3>Shell Scripting</h3>
+      </div>
+
+      <div class="glass-card skill-card">
+        <h3>AWS</h3>
+      </div>
+
+      <div class="glass-card skill-card">
+        <h3>GitHub Actions</h3>
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- PROJECTS -->
+
+  <section id="projects">
+
+    <h2 class="section-title">Projects</h2>
+
+    <div class="projects">
+
+      <div class="glass-card project-card">
+        <img src="https://images.unsplash.com/photo-1515879218367-8466d910aaa4?q=80&w=1200&auto=format&fit=crop" />
+
+        <h3>CI/CD Automation</h3>
+
+        <p>
+          Automated deployment pipeline using GitHub Actions,
+          Docker and Linux servers.
+        </p>
+      </div>
+
+      <div class="glass-card project-card">
+        <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=1200&auto=format&fit=crop" />
+
+        <h3>Dockerized Application</h3>
+
+        <p>
+          Containerized Node.js application with scalable architecture.
+        </p>
+      </div>
+
+      <div class="glass-card project-card">
+        <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=80&w=1200&auto=format&fit=crop" />
+
+        <h3>Cloud Infrastructure</h3>
+
+        <p>
+          AWS based cloud deployment with networking and automation.
+        </p>
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- EXPERIENCE -->
+
+  <section id="experience">
+
+    <h2 class="section-title">Experience & Education</h2>
+
+    <div class="timeline">
+
+      <div class="timeline-item">
+        <div class="glass-card">
+          <h3>DevOps Learning Journey</h3>
+          <p>Learning Linux, Docker, GitHub Actions, Networking & AWS.</p>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="glass-card">
+          <h3>CI/CD Practice Projects</h3>
+          <p>Built automation pipelines using GitHub Actions.</p>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="glass-card">
+          <h3>Docker Projects</h3>
+          <p>Containerized applications and managed deployments.</p>
+        </div>
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- CONTACT -->
+
+  <section id="contact">
+
+    <h2 class="section-title">Contact Me</h2>
+
+    <div class="glass-card contact-box">
+
+      <input type="text" placeholder="Your Name">
+
+      <input type="email" placeholder="Your Email">
+
+      <textarea rows="6" placeholder="Your Message"></textarea>
+
+      <a href="#" class="btn primary">Send Message</a>
+
+    </div>
+
+  </section>
+
+  <!-- FOOTER -->
+
+  <footer>
+    © 2026 Dev Singh | Aspiring DevOps Engineer
+  </footer>
+
+</body>
+</html>
