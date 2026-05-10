@@ -12,13 +12,14 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+
       - name: Checkout code
         uses: actions/checkout@v4
 
       - name: Login to Docker Hub
         uses: docker/login-action@v3
         with:
-          username: ${{ vars.DOCKERHUB_USER }}
+          username: devpratapsingh
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
       - name: Build and Push Docker Image
@@ -27,5 +28,5 @@ jobs:
           context: .
           push: true
           tags: |
-            ${{ vars.DOCKERHUB_USER }}/github-actions-app:latest
-            ${{ vars.DOCKERHUB_USER }}/github-actions-app:${{ github.sha }}
+            devpratapsingh/github-actions-app:latest
+            devpratapsingh/github-actions-app:${{ github.sha }}
